@@ -48,29 +48,16 @@ $$
 Substituting the velocity components,
 
 $$
-v_1^2
-=====
-
-l^2\dot{\theta}_1^2\cos^2(\theta_1)
-+
-l^2\dot{\theta}_1^2\sin^2(\theta_1)
+v_1^2 = l^2\dot{\theta}_1^2\cos^2(\theta_1) + l^2\dot{\theta}_1^2\sin^2(\theta_1)
 $$
 
 Factor out the common terms:
 
 $$
-v_1^2
-=====
-
-l^2\dot{\theta}_1^2
-\left[
-\cos^2(\theta_1)
-+
-\sin^2(\theta_1)
-\right]
+v_1^2 = l^2\dot{\theta}_1^2\left[\cos^2(\theta_1) + \sin^2(\theta_1)\right]
 $$
 
-Using
+Using the trigonometric identity
 
 $$
 \sin^2(\theta) + \cos^2(\theta) = 1
@@ -85,146 +72,69 @@ $$
 Therefore, the kinetic energy of the first mass is
 
 $$
-T_1
-===
-
-\frac{1}{2}ml^2\dot{\theta}_1^2
+T_1 = \frac{1}{2}ml^2\dot{\theta}_1^2
 $$
 
 ---
 
 ## Position of the Second Mass
 
-The position of the second mass depends on both pendulum angles:
+Because the second mass is attached to the first pendulum, its position depends on both angles:
 
 $$
-x_2
-===
-
-l\sin(\theta_1)
-+
-l\sin(\theta_2)
+x_2 = l\sin(\theta_1) + l\sin(\theta_2)
 $$
 
 $$
-y_2
-===
-
-## -l\cos(\theta_1)
-
-l\cos(\theta_2)
+y_2 = -l\cos(\theta_1) - l\cos(\theta_2)
 $$
 
-Differentiating gives
+Differentiating with respect to time gives
 
 $$
-\dot{x}_2
-=========
-
-l\dot{\theta}_1\cos(\theta_1)
-+
-l\dot{\theta}_2\cos(\theta_2)
+\dot{x}_2 = l\dot{\theta}_1\cos(\theta_1) + l\dot{\theta}_2\cos(\theta_2)
 $$
 
 and
 
 $$
-\dot{y}_2
-=========
-
-l\dot{\theta}_1\sin(\theta_1)
-+
-l\dot{\theta}_2\sin(\theta_2)
+\dot{y}_2 = l\dot{\theta}_1\sin(\theta_1) + l\dot{\theta}_2\sin(\theta_2)
 $$
 
-The squared speed is
+The squared speed of the second mass is
 
 $$
-v_2^2
-=====
-
-\dot{x}_2^2
-+
-\dot{y}_2^2
+v_2^2 = \dot{x}_2^2 + \dot{y}_2^2
 $$
 
-Substituting the velocity components,
+Substituting the velocity components gives
 
 $$
-v_2^2
-=====
-
-\left[
-l\dot{\theta}_1\cos(\theta_1)
-+
-l\dot{\theta}_2\cos(\theta_2)
-\right]^2
-+
-\left[
-l\dot{\theta}_1\sin(\theta_1)
-+
-l\dot{\theta}_2\sin(\theta_2)
-\right]^2
+v_2^2 = \left[l\dot{\theta}_1\cos(\theta_1) + l\dot{\theta}_2\cos(\theta_2)\right]^2 + \left[l\dot{\theta}_1\sin(\theta_1) + l\dot{\theta}_2\sin(\theta_2)\right]^2
 $$
 
-Expanding and collecting terms gives
+Expanding and collecting terms,
 
 $$
-v_2^2
-=====
-
-l^2\dot{\theta}_1^2
-+
-l^2\dot{\theta}_2^2
-+
-2l^2\dot{\theta}_1\dot{\theta}_2
-\left[
-\cos(\theta_1)\cos(\theta_2)
-+
-\sin(\theta_1)\sin(\theta_2)
-\right]
+v_2^2 = l^2\dot{\theta}_1^2 + l^2\dot{\theta}_2^2 + 2l^2\dot{\theta}_1\dot{\theta}_2\left[\cos(\theta_1)\cos(\theta_2) + \sin(\theta_1)\sin(\theta_2)\right]
 $$
 
 Using the identity
 
 $$
-\cos(\theta_1-\theta_2)
-=======================
-
-\cos(\theta_1)\cos(\theta_2)
-+
-\sin(\theta_1)\sin(\theta_2)
+\cos(\theta_1-\theta_2) = \cos(\theta_1)\cos(\theta_2) + \sin(\theta_1)\sin(\theta_2)
 $$
 
 we obtain
 
 $$
-v_2^2
-=====
-
-l^2\dot{\theta}_1^2
-+
-l^2\dot{\theta}_2^2
-+
-2l^2\dot{\theta}_1\dot{\theta}_2
-\cos(\theta_1-\theta_2)
+v_2^2 = l^2\dot{\theta}_1^2 + l^2\dot{\theta}_2^2 + 2l^2\dot{\theta}_1\dot{\theta}_2\cos(\theta_1-\theta_2)
 $$
 
 Therefore, the kinetic energy of the second mass is
 
 $$
-T_2
-===
-
-\frac{1}{2}m
-\left[
-l^2\dot{\theta}_1^2
-+
-l^2\dot{\theta}_2^2
-+
-2l^2\dot{\theta}_1\dot{\theta}_2
-\cos(\theta_1-\theta_2)
-\right]
+T_2 = \frac{1}{2}m\left[l^2\dot{\theta}_1^2 + l^2\dot{\theta}_2^2 + 2l^2\dot{\theta}_1\dot{\theta}_2\cos(\theta_1-\theta_2)\right]
 $$
 
 ---
@@ -237,37 +147,16 @@ $$
 T = T_1 + T_2
 $$
 
-Substituting $T_1$ and $T_2$,
+Substituting the expressions for $T_1$ and $T_2$,
 
 $$
-T
-=
-
-\frac{1}{2}ml^2\dot{\theta}_1^2
-+
-\frac{1}{2}m
-\left[
-l^2\dot{\theta}_1^2
-+
-l^2\dot{\theta}_2^2
-+
-2l^2\dot{\theta}_1\dot{\theta}_2
-\cos(\theta_1-\theta_2)
-\right]
+T = \frac{1}{2}ml^2\dot{\theta}_1^2 + \frac{1}{2}m\left[l^2\dot{\theta}_1^2 + l^2\dot{\theta}_2^2 + 2l^2\dot{\theta}_1\dot{\theta}_2\cos(\theta_1-\theta_2)\right]
 $$
 
 Combining terms gives
 
 $$
-T
-=
-
-ml^2\dot{\theta}_1^2
-+
-\frac{1}{2}ml^2\dot{\theta}_2^2
-+
-ml^2\dot{\theta}_1\dot{\theta}_2
-\cos(\theta_1-\theta_2)
+T = ml^2\dot{\theta}_1^2 + \frac{1}{2}ml^2\dot{\theta}_2^2 + ml^2\dot{\theta}_1\dot{\theta}_2\cos(\theta_1-\theta_2)
 $$
 
 The final term represents the coupling between the two pendulums because the velocity of the second mass depends on the motion of both links.
@@ -276,7 +165,7 @@ The final term represents the coupling between the two pendulums because the vel
 
 ## Potential Energy
 
-The gravitational potential energy of each mass is determined by its vertical position.
+The gravitational potential energy of each mass depends on its vertical position.
 
 For the first mass,
 
@@ -284,47 +173,22 @@ $$
 y_1 = -l\cos(\theta_1)
 $$
 
-so
+so its potential energy is
 
 $$
-V_1 = mgy_1
-$$
-
-which gives
-
-$$
-V_1
-===
-
--mgl\cos(\theta_1)
+V_1 = mgy_1 = -mgl\cos(\theta_1)
 $$
 
 For the second mass,
 
 $$
-y_2
-===
-
-## -l\cos(\theta_1)
-
-l\cos(\theta_2)
+y_2 = -l\cos(\theta_1) - l\cos(\theta_2)
 $$
 
-so
+so its potential energy is
 
 $$
-V_2 = mgy_2
-$$
-
-which gives
-
-$$
-V_2
-===
-
-## -mgl\cos(\theta_1)
-
-mgl\cos(\theta_2)
+V_2 = mgy_2 = -mgl\cos(\theta_1) - mgl\cos(\theta_2)
 $$
 
 The total potential energy is
@@ -336,25 +200,13 @@ $$
 Therefore,
 
 $$
-V
-=
-
-## -mgl\cos(\theta_1)
-
-## mgl\cos(\theta_1)
-
-mgl\cos(\theta_2)
+V = -mgl\cos(\theta_1) - mgl\cos(\theta_1) - mgl\cos(\theta_2)
 $$
 
-and finally,
+which simplifies to
 
 $$
-V
-=
-
-## -2mgl\cos(\theta_1)
-
-mgl\cos(\theta_2)
+V = -2mgl\cos(\theta_1) - mgl\cos(\theta_2)
 $$
 
 The factor of $2$ multiplying the first term appears because changing $\theta_1$ changes the vertical position of both masses.
@@ -369,93 +221,46 @@ $$
 L = T - V
 $$
 
-Substituting the kinetic and potential energies,
+Substituting the kinetic and potential energy expressions gives
 
 $$
-L
-=
-
-ml^2\dot{\theta}_1^2
-+
-\frac{1}{2}ml^2\dot{\theta}_2^2
-+
-ml^2\dot{\theta}_1\dot{\theta}_2
-\cos(\theta_1-\theta_2)
-+
-2mgl\cos(\theta_1)
-+
-mgl\cos(\theta_2)
+L = ml^2\dot{\theta}_1^2 + \frac{1}{2}ml^2\dot{\theta}_2^2 + ml^2\dot{\theta}_1\dot{\theta}_2\cos(\theta_1-\theta_2) + 2mgl\cos(\theta_1) + mgl\cos(\theta_2)
 $$
 
-The equations of motion are obtained by applying the Euler-Lagrange equation to each generalized coordinate:
+The equations of motion are obtained using the Euler-Lagrange equation:
 
 $$
-\frac{d}{dt}
-\left(
-\frac{\partial L}{\partial \dot{\theta}_i}
-\right)
--------
-
-# \frac{\partial L}{\partial \theta_i}
-
-0
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{\theta}_i}\right) - \frac{\partial L}{\partial \theta_i} = 0
 $$
 
 for $i=1,2$.
 
 ---
 
-## Coupled Equations Before Solving for Acceleration
+## Coupled Equations of Motion
 
 Applying the Euler-Lagrange equation to $\theta_1$ gives
 
 $$
-2\ddot{\theta}_1
-+
-\ddot{\theta}_2\cos(\theta_1-\theta_2)
-+
-\dot{\theta}_2^2\sin(\theta_1-\theta_2)
-+
-2\frac{g}{l}\sin(\theta_1)
-==========================
-
-0
+2\ddot{\theta}_1 + \ddot{\theta}_2\cos(\theta_1-\theta_2) + \dot{\theta}_2^2\sin(\theta_1-\theta_2) + 2\frac{g}{l}\sin(\theta_1) = 0
 $$
 
-Applying it to $\theta_2$ gives
+Applying the Euler-Lagrange equation to $\theta_2$ gives
 
 $$
-\ddot{\theta}_2
-+
-\ddot{\theta}_1\cos(\theta_1-\theta_2)
---------------------------------------
-
-\dot{\theta}_1^2\sin(\theta_1-\theta_2)
-+
-\frac{g}{l}\sin(\theta_2)
-=========================
-
-0
+\ddot{\theta}_2 + \ddot{\theta}_1\cos(\theta_1-\theta_2) - \dot{\theta}_1^2\sin(\theta_1-\theta_2) + \frac{g}{l}\sin(\theta_2) = 0
 $$
 
-Solving these two coupled equations for $\ddot{\theta}_1$ and $\ddot{\theta}_2$ gives the equations of motion used in the numerical simulation.
+These two coupled equations can be solved for $\ddot{\theta}_1$ and $\ddot{\theta}_2$ to obtain the nonlinear equations implemented in the numerical simulation.
 
 ---
 
 ## Numerical State Representation
 
-To solve the equations numerically, define the state vector
+To integrate the equations numerically, define the state vector
 
 $$
-\mathbf{y}
-==========
-
-\begin{bmatrix}
-\theta_1 \
-\omega_1 \
-\theta_2 \
-\omega_2
-\end{bmatrix}
+\mathbf{y} = \begin{bmatrix} \theta_1 \ \omega_1 \ \theta_2 \ \omega_2 \end{bmatrix}
 $$
 
 where
@@ -470,23 +275,13 @@ $$
 \omega_2 = \dot{\theta}_2
 $$
 
-Therefore,
+The derivative of the state vector is therefore
 
 $$
-\frac{d\mathbf{y}}{dt}
-======================
-
-\begin{bmatrix}
-\omega_1 \
-\dot{\omega}_1 \
-\omega_2 \
-\dot{\omega}_2
-\end{bmatrix}
+\frac{d\mathbf{y}}{dt} = \begin{bmatrix} \omega_1 \ \dot{\omega}_1 \ \omega_2 \ \dot{\omega}_2 \end{bmatrix}
 $$
 
-The resulting nonlinear system is integrated numerically using a second-order Runge-Kutta midpoint method (RK2).
-
-
+The resulting nonlinear system of ordinary differential equations is integrated numerically using a second-order Runge-Kutta midpoint method (RK2).
 
 ## Numerical Method
 Explain the second-order Runge-Kutta (RK2) method.
