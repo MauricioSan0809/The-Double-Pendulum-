@@ -9,23 +9,9 @@ Python simulation of a nonlinear double pendulum using a second-order Runge-Kutt
 
 ## Physics Model
 
-The double pendulum is modeled as two point masses of equal mass $m$ connected by massless rods of equal length $l$.
+The double pendulum is modeled as two point masses of equal mass $m$ connected by massless rods of equal length $l$. The angular positions are $\theta_1(t)$ and $\theta_2(t)$, measured from the downward vertical direction.
 
-The angular positions of the two pendulums are
-
-$$
-\theta_1(t), \qquad \theta_2(t)
-$$
-
-with angular velocities
-
-$$
-\omega_1 = \dot{\theta}_1,
-\qquad
-\omega_2 = \dot{\theta}_2.
-$$
-
-The angles are measured from the downward vertical direction.
+The corresponding angular velocities are $\omega_1 = \dot{\theta}_1$ and $\omega_2 = \dot{\theta}_2$.
 
 ---
 
@@ -38,34 +24,25 @@ x_1 = l\sin(\theta_1)
 $$
 
 $$
-y_1 = -l\cos(\theta_1).
+y_1 = -l\cos(\theta_1)
 $$
 
-Differentiating with respect to time gives the velocity components
+Differentiating with respect to time gives
 
 $$
-\dot{x}_1
-=========
-
-l\dot{\theta}_1\cos(\theta_1)
+\dot{x}_1 = l\dot{\theta}_1\cos(\theta_1)
 $$
 
 and
 
 $$
-\dot{y}_1
-=========
-
-l\dot{\theta}_1\sin(\theta_1).
+\dot{y}_1 = l\dot{\theta}_1\sin(\theta_1)
 $$
 
-The squared speed of the first mass is
+The squared speed is
 
 $$
-v_1^2
-=====
-
-\dot{x}_1^2+\dot{y}_1^2.
+v_1^2 = \dot{x}_1^2 + \dot{y}_1^2
 $$
 
 Substituting the velocity components,
@@ -76,7 +53,7 @@ v_1^2
 
 l^2\dot{\theta}_1^2\cos^2(\theta_1)
 +
-l^2\dot{\theta}_1^2\sin^2(\theta_1).
+l^2\dot{\theta}_1^2\sin^2(\theta_1)
 $$
 
 Factor out the common terms:
@@ -87,20 +64,22 @@ v_1^2
 
 l^2\dot{\theta}_1^2
 \left[
-\cos^2(\theta_1)+\sin^2(\theta_1)
-\right].
+\cos^2(\theta_1)
++
+\sin^2(\theta_1)
+\right]
 $$
 
-Using the identity
+Using
 
 $$
-\sin^2(\theta)+\cos^2(\theta)=1,
+\sin^2(\theta) + \cos^2(\theta) = 1
 $$
 
 we obtain
 
 $$
-v_1^2=l^2\dot{\theta}_1^2.
+v_1^2 = l^2\dot{\theta}_1^2
 $$
 
 Therefore, the kinetic energy of the first mass is
@@ -109,7 +88,7 @@ $$
 T_1
 ===
 
-\frac{1}{2}ml^2\dot{\theta}_1^2.
+\frac{1}{2}ml^2\dot{\theta}_1^2
 $$
 
 ---
@@ -122,19 +101,21 @@ $$
 x_2
 ===
 
-l\sin(\theta_1)+l\sin(\theta_2)
+l\sin(\theta_1)
++
+l\sin(\theta_2)
 $$
-
-and
 
 $$
 y_2
 ===
 
--l\cos(\theta_1)-l\cos(\theta_2).
+## -l\cos(\theta_1)
+
+l\cos(\theta_2)
 $$
 
-Differentiating with respect to time gives
+Differentiating gives
 
 $$
 \dot{x}_2
@@ -153,7 +134,7 @@ $$
 
 l\dot{\theta}_1\sin(\theta_1)
 +
-l\dot{\theta}_2\sin(\theta_2).
+l\dot{\theta}_2\sin(\theta_2)
 $$
 
 The squared speed is
@@ -162,7 +143,9 @@ $$
 v_2^2
 =====
 
-\dot{x}_2^2+\dot{y}_2^2.
+\dot{x}_2^2
++
+\dot{y}_2^2
 $$
 
 Substituting the velocity components,
@@ -181,10 +164,10 @@ l\dot{\theta}_2\cos(\theta_2)
 l\dot{\theta}_1\sin(\theta_1)
 +
 l\dot{\theta}_2\sin(\theta_2)
-\right]^2.
+\right]^2
 $$
 
-Expanding and grouping terms gives
+Expanding and collecting terms gives
 
 $$
 v_2^2
@@ -199,10 +182,10 @@ l^2\dot{\theta}_2^2
 \cos(\theta_1)\cos(\theta_2)
 +
 \sin(\theta_1)\sin(\theta_2)
-\right].
+\right]
 $$
 
-Using the trigonometric identity
+Using the identity
 
 $$
 \cos(\theta_1-\theta_2)
@@ -210,10 +193,10 @@ $$
 
 \cos(\theta_1)\cos(\theta_2)
 +
-\sin(\theta_1)\sin(\theta_2),
+\sin(\theta_1)\sin(\theta_2)
 $$
 
-the expression simplifies to
+we obtain
 
 $$
 v_2^2
@@ -224,7 +207,7 @@ l^2\dot{\theta}_1^2
 l^2\dot{\theta}_2^2
 +
 2l^2\dot{\theta}_1\dot{\theta}_2
-\cos(\theta_1-\theta_2).
+\cos(\theta_1-\theta_2)
 $$
 
 Therefore, the kinetic energy of the second mass is
@@ -241,7 +224,7 @@ l^2\dot{\theta}_2^2
 +
 2l^2\dot{\theta}_1\dot{\theta}_2
 \cos(\theta_1-\theta_2)
-\right].
+\right]
 $$
 
 ---
@@ -251,10 +234,10 @@ $$
 The total kinetic energy is
 
 $$
-T=T_1+T_2.
+T = T_1 + T_2
 $$
 
-Substituting the expressions for $T_1$ and $T_2$ gives
+Substituting $T_1$ and $T_2$,
 
 $$
 T
@@ -270,13 +253,12 @@ l^2\dot{\theta}_2^2
 +
 2l^2\dot{\theta}_1\dot{\theta}_2
 \cos(\theta_1-\theta_2)
-\right].
+\right]
 $$
 
-Combining terms,
+Combining terms gives
 
 $$
-\boxed{
 T
 =
 
@@ -286,32 +268,35 @@ ml^2\dot{\theta}_1^2
 +
 ml^2\dot{\theta}_1\dot{\theta}_2
 \cos(\theta_1-\theta_2)
-}
 $$
 
-The final term represents the coupling between the two pendulums. The velocity of the second mass depends on the motion of both links.
+The final term represents the coupling between the two pendulums because the velocity of the second mass depends on the motion of both links.
 
 ---
 
 ## Potential Energy
 
-The gravitational potential energy of a point mass is determined by its vertical position.
+The gravitational potential energy of each mass is determined by its vertical position.
 
 For the first mass,
 
 $$
-y_1=-l\cos(\theta_1),
+y_1 = -l\cos(\theta_1)
 $$
 
-so its potential energy is
+so
+
+$$
+V_1 = mgy_1
+$$
+
+which gives
 
 $$
 V_1
 ===
 
-# mgy_1
-
--mgl\cos(\theta_1).
+-mgl\cos(\theta_1)
 $$
 
 For the second mass,
@@ -320,70 +305,73 @@ $$
 y_2
 ===
 
--l\cos(\theta_1)-l\cos(\theta_2),
+## -l\cos(\theta_1)
+
+l\cos(\theta_2)
 $$
 
 so
 
 $$
+V_2 = mgy_2
+$$
+
+which gives
+
+$$
 V_2
 ===
 
-# mgy_2
-
 ## -mgl\cos(\theta_1)
 
-mgl\cos(\theta_2).
+mgl\cos(\theta_2)
 $$
 
-The total potential energy is therefore
+The total potential energy is
 
 $$
-V=V_1+V_2.
+V = V_1 + V_2
 $$
 
-Substituting,
+Therefore,
 
 $$
 V
 =
 
--mgl\cos(\theta_1)
--mgl\cos(\theta_1)
--mgl\cos(\theta_2).
+## -mgl\cos(\theta_1)
+
+## mgl\cos(\theta_1)
+
+mgl\cos(\theta_2)
 $$
 
-Thus,
+and finally,
 
 $$
-\boxed{
 V
 =
 
 ## -2mgl\cos(\theta_1)
 
 mgl\cos(\theta_2)
-}
 $$
 
-The factor of $2$ multiplying the first term occurs because the motion of the first pendulum changes the vertical position of both masses.
+The factor of $2$ multiplying the first term appears because changing $\theta_1$ changes the vertical position of both masses.
 
 ---
 
 ## Lagrangian
 
-The equations of motion can be obtained using Lagrangian mechanics.
-
 The Lagrangian is defined as
 
 $$
-L=T-V.
+L = T - V
 $$
 
-Substituting the kinetic and potential energies gives
+Substituting the kinetic and potential energies,
 
 $$
-\boxed{
 L
 =
 
@@ -397,10 +385,9 @@ ml^2\dot{\theta}_1\dot{\theta}_2
 2mgl\cos(\theta_1)
 +
 mgl\cos(\theta_2)
-}
 $$
 
-The Euler-Lagrange equation is then applied to each generalized coordinate $\theta_i$:
+The equations of motion are obtained by applying the Euler-Lagrange equation to each generalized coordinate:
 
 $$
 \frac{d}{dt}
@@ -411,19 +398,53 @@ $$
 
 # \frac{\partial L}{\partial \theta_i}
 
-0.
-
+0
 $$
 
-Applying this equation for $\theta_1$ and $\theta_2$ produces two coupled nonlinear differential equations that describe the motion of the double pendulum.
+for $i=1,2$.
+
+---
+
+## Coupled Equations Before Solving for Acceleration
+
+Applying the Euler-Lagrange equation to $\theta_1$ gives
+
+$$
+2\ddot{\theta}_1
++
+\ddot{\theta}_2\cos(\theta_1-\theta_2)
++
+\dot{\theta}_2^2\sin(\theta_1-\theta_2)
++
+2\frac{g}{l}\sin(\theta_1)
+==========================
+
+0
+$$
+
+Applying it to $\theta_2$ gives
+
+$$
+\ddot{\theta}_2
++
+\ddot{\theta}_1\cos(\theta_1-\theta_2)
+--------------------------------------
+
+\dot{\theta}_1^2\sin(\theta_1-\theta_2)
++
+\frac{g}{l}\sin(\theta_2)
+=========================
+
+0
+$$
+
+Solving these two coupled equations for $\ddot{\theta}_1$ and $\ddot{\theta}_2$ gives the equations of motion used in the numerical simulation.
 
 ---
 
 ## Numerical State Representation
 
-To solve the equations numerically, the second-order differential equations are rewritten as a system of first-order equations.
-
-Define the state vector as
+To solve the equations numerically, define the state vector
 
 $$
 \mathbf{y}
@@ -434,22 +455,22 @@ $$
 \omega_1 \
 \theta_2 \
 \omega_2
-\end{bmatrix},
+\end{bmatrix}
 $$
 
 where
 
 $$
-\omega_1=\dot{\theta}_1
+\omega_1 = \dot{\theta}_1
 $$
 
 and
 
 $$
-\omega_2=\dot{\theta}_2.
+\omega_2 = \dot{\theta}_2
 $$
 
-The derivative of the state vector is therefore
+Therefore,
 
 $$
 \frac{d\mathbf{y}}{dt}
@@ -460,10 +481,10 @@ $$
 \dot{\omega}_1 \
 \omega_2 \
 \dot{\omega}_2
-\end{bmatrix}.
+\end{bmatrix}
 $$
 
-The resulting system of nonlinear ordinary differential equations is integrated numerically using a second-order Runge-Kutta midpoint method (RK2).
+The resulting nonlinear system is integrated numerically using a second-order Runge-Kutta midpoint method (RK2).
 
 
 
