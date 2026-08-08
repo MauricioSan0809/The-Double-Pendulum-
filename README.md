@@ -283,11 +283,139 @@ $$
 
 The resulting nonlinear system of ordinary differential equations is integrated numerically using a second-order Runge-Kutta midpoint method (RK2).
 
-## Numerical Method
-Explain the second-order Runge-Kutta (RK2) method.
+## Numerical Method: Second-Order Runge-Kutta (RK2)
+
+The double pendulum equations of motion form a system of coupled nonlinear ordinary differential equations. Because these equations generally do not have a simple closed-form solution, the system is solved numerically.
+
+This project uses the **second-order Runge-Kutta midpoint method (RK2)** to propagate the state of the double pendulum through time.
+
+The state vector is
+
+$$
+\mathbf{y} = \begin{bmatrix} \theta_1 \ \omega_1 \ \theta_2 \ \omega_2 \end{bmatrix}
+$$
+
+and the system of differential equations can be written in the general form
+
+$$
+\frac{d\mathbf{y}}{dt} = f(\mathbf{y})
+$$
+
+where $f(\mathbf{y})$ contains the angular velocities and angular accelerations of both pendulums.
+
+---
+
+### Step 1: Evaluate the Initial Slope
+
+At the beginning of each timestep, the derivative of the current state is evaluated:
+
+$$
+\mathbf{k}_1 = f(\mathbf{y}_n)
+$$
+
+This derivative represents the instantaneous rate of change of the system at the current state $\mathbf{y}_n$.
+
+---
+
+### Step 2: Estimate the Midpoint
+
+Using the initial slope, an estimate of the state halfway through the timestep is calculated:
+
+$$
+\mathbf{y}_{\mathrm{mid}} = \mathbf{y}_n + \frac{\Delta t}{2}\mathbf{k}_1
+$$
+
+where $\Delta t$ is the numerical timestep.
+
+Evaluating the system at this midpoint provides a better estimate of how the state changes over the entire timestep.
+
+---
+
+### Step 3: Evaluate the Midpoint Slope
+
+The derivative is evaluated again using the estimated midpoint state:
+
+$$
+\mathbf{k}*2 = f(\mathbf{y}*{\mathrm{mid}})
+$$
+
+The midpoint slope $\mathbf{k}_2$ is used as the approximation to the average rate of change over the timestep.
+
+---
+
+### Step 4: Update the State
+
+The state is advanced through one complete timestep using the midpoint slope:
+
+$$
+\mathbf{y}_{n+1} = \mathbf{y}_n + \Delta t,\mathbf{k}_2
+$$
+
+Combining the steps gives the RK2 midpoint algorithm:
+
+$$
+\mathbf{k}_1 = f(\mathbf{y}_n)
+$$
+
+$$
+\mathbf{y}_{\mathrm{mid}} = \mathbf{y}_n + \frac{\Delta t}{2}\mathbf{k}_1
+$$
+
+$$
+\mathbf{k}*2 = f(\mathbf{y}*{\mathrm{mid}})
+$$
+
+$$
+\mathbf{y}_{n+1} = \mathbf{y}_n + \Delta t,\mathbf{k}_2
+$$
+
+---
 
 ## Implementation
-Explain how the Python simulation works.
+
+The RK2 method is implemented in Python as:
+
+```python
+def move_RK2(f, y, dt):
+    ydot = f(y)
+    y_half = y + ydot * dt/2
+    ydot_half = f(y_half)
+    y = y + ydot_half * dt
+    return y
+```
+
+Here:
+
+* `f(y)` evaluates the double pendulum equations of motion.
+* `ydot` corresponds to the initial slope $\mathbf{k}_1$.
+* `y_half` represents the estimated midpoint state $\mathbf{y}_{\mathrm{mid}}$.
+* `ydot_half` corresponds to the midpoint slope $\mathbf{k}_2$.
+* `dt` represents the timestep $\Delta t$.
+
+The simulation uses a timestep of
+
+$$
+\Delta t = 0.001\ \text{s}
+$$
+
+and propagates the equations of motion over a total simulation time of $10$ seconds.
+
+---
+
+## Why RK2?
+
+The standard Euler method estimates the next state using only the derivative at the beginning of the timestep:
+
+$$
+\mathbf{y}_{n+1} = \mathbf{y}_n + \Delta t,f(\mathbf{y}_n)
+$$
+
+RK2 improves on this approach by evaluating the derivative at an estimated midpoint of the interval. The midpoint slope provides a better approximation of the system's behavior over the timestep.
+
+This is particularly useful for the double pendulum because its equations are nonlinear and the motion can be highly sensitive to changes in the system state.
+
+For this simulation, the numerical timestep was chosen to be small enough to accurately resolve the pendulum motion while limiting numerical error.
+
 
 ## Numerical Validation
 Explain how timestep selection and total-energy error
