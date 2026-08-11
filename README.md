@@ -281,7 +281,7 @@ $$
 \Delta t = 0.001\ \text{s}
 $$
 
-over a total simulated time of $10$ seconds.
+over a total simulated time of $30$ seconds.
 
 ---
 
