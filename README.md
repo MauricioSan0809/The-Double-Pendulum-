@@ -14,8 +14,6 @@ The double pendulum is modeled as two point masses of equal mass $m$ connected b
 The corresponding angular velocities are $\omega_1 = \dot{\theta}_1$ and $\omega_2 = \dot{\theta}_2$.
 
 ---
-
-```markdown
 ## Position of the First Mass
 
 The first mass is located at the end of the first pendulum. Its Cartesian coordinates are
@@ -305,10 +303,6 @@ $$
 $$
 
 These angular accelerations are then used to construct the first-order system of ordinary differential equations integrated using the RK2 midpoint method.
-```
-
-
-
 ---
 
 ## Numerical State Representation
