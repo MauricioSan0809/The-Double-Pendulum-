@@ -175,13 +175,23 @@ This project uses the **second-order Runge-Kutta midpoint method (RK2)** to prop
 The state vector is
 
 $$
-\mathbf{y} = \begin{bmatrix} \theta_1 \ \omega_1 \ \theta_2 \ \omega_2 \end{bmatrix}
+\mathbf{y} = \begin{bmatrix}
+\theta_1 \\
+\omega_1 \\
+\theta_2 \\
+\omega_2
+\end{bmatrix}
 $$
 
 and its time derivative is
 
 $$
-\dot{\mathbf{y}} = \begin{bmatrix} \omega_1 \ \dot{\omega}_1 \ \omega_2 \ \dot{\omega}_2 \end{bmatrix}
+\dot{\mathbf{y}} = \begin{bmatrix}
+\omega_1 \\
+\dot{\omega}_1 \\
+\omega_2 \\
+\dot{\omega}_2
+\end{bmatrix}
 $$
 
 where $\dot{\omega}_1$ and $\dot{\omega}_2$ are the angular accelerations obtained from the equations of motion.
@@ -193,7 +203,12 @@ where $\dot{\omega}_1$ and $\dot{\omega}_2$ are the angular accelerations obtain
 At the beginning of each timestep, the derivative of the current state $\mathbf{y}_n$ is calculated:
 
 $$
-\dot{\mathbf{y}}*n = \begin{bmatrix} \omega*{1,n} \ \dot{\omega}*{1,n} \ \omega*{2,n} \ \dot{\omega}_{2,n} \end{bmatrix}
+\dot{\mathbf{y}}_n = \begin{bmatrix}
+\omega_{1,n} \\
+\dot{\omega}_{1,n} \\
+\omega_{2,n} \\
+\dot{\omega}_{2,n}
+\end{bmatrix}
 $$
 
 This represents the instantaneous rate of change of the double pendulum at the beginning of the timestep.
@@ -210,7 +225,7 @@ $$
 
 where $\Delta t$ is the numerical timestep.
 
-This midpoint estimate gives an approximation of the state of the double pendulum halfway between $\mathbf{y}*n$ and $\mathbf{y}*{n+1}$.
+This midpoint estimate gives an approximation of the state of the double pendulum halfway between $\mathbf{y}_n$ and $\mathbf{y}_{n+1}$.
 
 ---
 
@@ -219,7 +234,12 @@ This midpoint estimate gives an approximation of the state of the double pendulu
 The equations of motion are evaluated again using the midpoint state to obtain
 
 $$
-\dot{\mathbf{y}}*{\mathrm{half}} = \begin{bmatrix} \omega*{1,\mathrm{half}} \ \dot{\omega}*{1,\mathrm{half}} \ \omega*{2,\mathrm{half}} \ \dot{\omega}_{2,\mathrm{half}} \end{bmatrix}
+\dot{\mathbf{y}}_{\mathrm{half}} = \begin{bmatrix}
+\omega_{1,\mathrm{half}} \\
+\dot{\omega}_{1,\mathrm{half}} \\
+\omega_{2,\mathrm{half}} \\
+\dot{\omega}_{2,\mathrm{half}}
+\end{bmatrix}
 $$
 
 Because this derivative is evaluated halfway through the interval, it provides a better estimate of the average rate of change over the entire timestep than using only the derivative at the beginning.
@@ -231,7 +251,7 @@ Because this derivative is evaluated halfway through the interval, it provides a
 The midpoint derivative is then used to advance the system through the full timestep:
 
 $$
-\mathbf{y}_{n+1} = \mathbf{y}*n + \Delta t,\dot{\mathbf{y}}*{\mathrm{half}}
+\mathbf{y}_{n+1} = \mathbf{y}_n + \Delta t\,\dot{\mathbf{y}}_{\mathrm{half}}
 $$
 
 The complete RK2 midpoint procedure can therefore be summarized as
@@ -245,11 +265,11 @@ $$
 $$
 
 $$
-\dot{\mathbf{y}}*{\mathrm{half}} = \text{derivative evaluated at } \mathbf{y}*{\mathrm{half}}
+\dot{\mathbf{y}}_{\mathrm{half}} = \text{derivative evaluated at } \mathbf{y}_{\mathrm{half}}
 $$
 
 $$
-\mathbf{y}_{n+1} = \mathbf{y}*n + \Delta t,\dot{\mathbf{y}}*{\mathrm{half}}
+\mathbf{y}_{n+1} = \mathbf{y}_n + \Delta t\,\dot{\mathbf{y}}_{\mathrm{half}}
 $$
 
 ---
@@ -281,7 +301,7 @@ $$
 \Delta t = 0.001\ \text{s}
 $$
 
-over a total simulated time of $30$ seconds.
+over a total simulated time of $10$ seconds.
 
 ---
 
@@ -290,7 +310,7 @@ over a total simulated time of $30$ seconds.
 A basic Euler method advances the state using only the derivative at the beginning of each timestep:
 
 $$
-\mathbf{y}_{n+1} = \mathbf{y}_n + \Delta t,\dot{\mathbf{y}}_n
+\mathbf{y}_{n+1} = \mathbf{y}_n + \Delta t\,\dot{\mathbf{y}}_n
 $$
 
 The RK2 midpoint method improves this estimate by first calculating an approximate state halfway through the timestep and then using the derivative at that midpoint to advance the system.
@@ -307,9 +327,9 @@ were used to evaluate numerical accuracy.
 Include animation, plots, and observations.
 
 ## Technologies
-Python
-NumPy
-Matplotlib
+- Python
+- NumPy
+- Matplotlib
 
 ## Running the Project
 Installation and execution instructions.
@@ -319,3 +339,4 @@ Clearly state your individual work.
 
 ## Contributors
 Credit the other project members.
+
