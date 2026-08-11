@@ -1,5 +1,5 @@
 # The-Double-Pendulum-
-Python simulation of a nonlinear double pendulum using a second-order Runge-Kutta (RK2) ODE solver. Explores chaotic motion, timestep selection, energy conservation, numerical accuracy, and animated visualization of the coupled pendulum system.
+Python simulation of a nonlinear double pendulum using a second-order Runge-Kutta (RK2) ODE solver. Explores chaotic motion, timestep selection, energy conservation, numerical accuracy, and an interactive Pygame visualization of the coupled pendulum system.
 ## Objectives
 - Model a nonlinear double pendulum
 - Solve the equations of motion numerically
@@ -295,13 +295,27 @@ The variables in the code correspond directly to the mathematical expressions:
 * `ydot_half` represents the midpoint derivative $\dot{\mathbf{y}}_{\mathrm{half}}$.
 * `dt` represents the timestep $\Delta t$.
 
-The simulation uses
+## Simulation Parameters
 
-$$
-\Delta t = 0.001\ \text{s}
-$$
+The simulation uses a numerical timestep of
 
-over a total simulated time of $10$ seconds.
+$$\Delta t = 0.001\ \text{s}$$
+
+and runs for a total simulated time of
+
+$$t = 30\ \text{s}$$
+
+The initial conditions are
+
+$$\theta_1(0)=\pi,\qquad \omega_1(0)=0$$
+
+$$\theta_2(0)=\frac{\pi}{2},\qquad \omega_2(0)=0$$
+
+The physical parameters used in the model are
+
+- Gravitational acceleration: $g = 9.81\ \text{m/s}^2$
+- Pendulum length: $l = 1\ \text{m}$
+- Mass of each bob: $m = 2\ \text{kg}$
 
 ---
 
@@ -309,34 +323,113 @@ over a total simulated time of $10$ seconds.
 
 A basic Euler method advances the state using only the derivative at the beginning of each timestep:
 
-$$
-\mathbf{y}_{n+1} = \mathbf{y}_n + \Delta t\,\dot{\mathbf{y}}_n
-$$
+$$\mathbf{y}_{n+1} = \mathbf{y}_n + \Delta t\,\dot{\mathbf{y}}_n$$
 
 The RK2 midpoint method improves this estimate by first calculating an approximate state halfway through the timestep and then using the derivative at that midpoint to advance the system.
 
 For a nonlinear system such as the double pendulum, the state can change significantly during a timestep. Evaluating the derivative at the midpoint provides a more accurate approximation of the system's motion than using only the initial derivative.
 
-
+---
 
 ## Numerical Validation
-Explain how timestep selection and total-energy error
-were used to evaluate numerical accuracy.
+
+For an ideal double pendulum without damping, total mechanical energy should remain constant. Because the equations are integrated numerically, a small amount of numerical energy drift is expected.
+
+The simulation calculates kinetic energy, potential energy, and total mechanical energy at every solver timestep:
+
+$$E = T + V$$
+
+The initial total energy is used as the reference value,
+
+$$E_0 = E(0)$$
+
+and the relative energy error is calculated as
+
+$$\epsilon_E(t)=\left|\frac{E(t)-E_0}{E_0}\right|$$
+
+The code plots this quantity over the full 30-second simulation to evaluate the numerical stability of the RK2 solution.
+
+Using the current parameters and a timestep of $\Delta t=0.001\ \text{s}$, the maximum relative energy error over the 30-second simulation is approximately
+
+$$1.58\times10^{-4}$$
+
+or about **0.0158%**.
+
+This small error indicates that the selected timestep provides good energy conservation for the current simulation.
+
+---
+
+## Interactive Visualization
+
+The pendulum motion is displayed using **Pygame** in a $900\times900$ pixel window.
+
+The animation converts the simulated angular positions into Cartesian coordinates for both masses and displays:
+
+- Both pendulum rods and masses
+- A motion trail following the second mass
+- The current simulation time
+- The current playback speed or paused status
+
+The numerical solver uses a timestep of $0.001$ seconds, while the visualization displays every 10th solver point. This corresponds to
+
+$$0.01\ \text{s}$$
+
+of simulated time between displayed animation states at normal speed.
+
+The animation also supports keyboard controls:
+
+- **Space** — pause or resume the animation
+- **R** — restart the animation and clear the motion trail
+- **Up Arrow** — increase playback speed, up to $10\times$
+- **Down Arrow** — decrease playback speed, down to $1\times$
+
+The trail stores the most recent 250 displayed positions of the second mass.
+
+---
 
 ## Results
-Include animation, plots, and observations.
+
+The program produces two primary outputs:
+
+1. An interactive Pygame visualization of the double-pendulum motion with playback controls and a trajectory trail.
+2. A Matplotlib plot of relative energy error versus time for evaluating numerical energy conservation.
+
+Together, these outputs provide both a visual representation of the nonlinear motion and a numerical check on the accuracy of the RK2 integration.
+
+---
 
 ## Technologies
+
 - Python
 - NumPy
 - Matplotlib
+- Pygame
+
+---
 
 ## Running the Project
-Installation and execution instructions.
+
+Install the required Python packages:
+
+```bash
+python -m pip install numpy matplotlib pygame
+```
+
+Then run the simulation:
+
+```bash
+python "ProjectCode_with_timer(1).py"
+```
+
+The Pygame animation window will open first. After the animation is closed or reaches the end of the simulation, the Matplotlib relative-energy-error plot is displayed.
+
+---
 
 ## My Contributions
+
 Clearly state your individual work.
 
 ## Contributors
+
 Credit the other project members.
 
