@@ -9,8 +9,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import pygame
-from pathlib import Path
-import imageio.v2 as imageio
 
 def move_RK2(f, y, dt):
     ydot = f(y)
