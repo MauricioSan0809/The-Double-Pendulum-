@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.spyder-py3/
+.vscode/
+.DS_Store
+Thumbs.db
