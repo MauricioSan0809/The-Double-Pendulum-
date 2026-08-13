@@ -1,3 +1,7 @@
+## Demo
+
+![Double Pendulum Simulation](media/double_pendulum.gif)
+
 # The-Double-Pendulum-
 Python simulation of a nonlinear double pendulum using a second-order Runge-Kutta (RK2) ODE solver. Explores chaotic motion, timestep selection, energy conservation, numerical accuracy, and an interactive Pygame visualization of the coupled pendulum system.
 ## Objectives
