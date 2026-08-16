@@ -15,7 +15,7 @@ Python simulation of a nonlinear double pendulum using a second-order Runge-Kutt
 
 ## Physics Model
 <p align="center">
-  <img src="figures/double_pendulum_diagram.png"
+  <img src="figures/double_pendulum_figure.png"
        alt="Double Pendulum System"
        width="700">
 </p>
