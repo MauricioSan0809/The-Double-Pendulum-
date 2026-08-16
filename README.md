@@ -14,6 +14,11 @@ Python simulation of a nonlinear double pendulum using a second-order Runge-Kutt
 - Visualize the motion
 
 ## Physics Model
+<p align="center">
+  <img src="figures/double_pendulum_diagram.png"
+       alt="Double Pendulum System"
+       width="700">
+</p>
 
 The double pendulum is modeled as two point masses of equal mass $m$ connected by massless rods of equal length $l$. The angular positions are $\theta_1(t)$ and $\theta_2(t)$, measured from the downward vertical direction.
 
