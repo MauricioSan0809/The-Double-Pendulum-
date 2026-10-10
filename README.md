@@ -236,8 +236,7 @@ $$
 
 where $\Delta t$ is the numerical timestep.
 
-This midpoint estimate gives an approximation of the state of the double pendulum halfway between $\mathbf{y}_n$ and $\mathbf{y}_{n+1}$.
-
+This midpoint estimate gives an approximation of the state of the double pendulum halfway between $`\mathbf{y}_{n}`$ and $`\mathbf{y}_{n+1}`$.
 ---
 
 ### Step 3: Evaluate the Midpoint Derivative
