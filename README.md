@@ -235,7 +235,7 @@ The current derivative is used to estimate the state halfway through the timeste
 \mathbf{y}_{n+\frac{1}{2}} = \mathbf{y}_n + \frac{\Delta t}{2}\,\dot{\mathbf{y}}_n
 ```
 
-where $`\Delta t`$ is the numerical timestep.
+where Δt is the numerical timestep.
 
 This midpoint estimate approximates the state of the double pendulum halfway between $`\mathbf{y}_n`$ and $`\mathbf{y}_{n+1}`$.
 ---
