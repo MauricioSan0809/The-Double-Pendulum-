@@ -232,12 +232,13 @@ This represents the instantaneous rate of change of the double pendulum at the b
 The current derivative is used to estimate the state halfway through the timestep:
 
 ```math
-\mathbf{y}_{n+\frac{1}{2}} = \mathbf{y}_n + \frac{\Delta t}{2}\,\dot{\mathbf{y}}_n
+y_{n+\frac{1}{2}} = y_n + \frac{\Delta t}{2}\,\dot{y}_n
 ```
 
-where Δt is the numerical timestep.
+where $`\Delta t`$ is the numerical timestep.
 
-This midpoint estimate approximates the state of the double pendulum halfway between $`\mathbf{y}_n`$ and $`\mathbf{y}_{n+1}`$.
+This midpoint estimate approximates the state of the double pendulum halfway between $`y_n`$ and $`y_{n+1}`$.
+
 ---
 
 ### Step 3: Evaluate the Midpoint Derivative
