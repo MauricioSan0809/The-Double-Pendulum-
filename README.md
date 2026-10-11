@@ -23,78 +23,137 @@ In this project, I created a Python simulation of a nonlinear double pendulum us
        width="700">
 </p>
 
-The double pendulum is modeled as two point masses of equal mass $m$ connected by massless rods of equal length $l$. The angular positions are $\theta_1(t)$ and $\theta_2(t)$, measured from the downward vertical direction.
+The double pendulum is modeled as two point masses, m₁ and m₂, connected by massless rigid rods of lengths l₁ and l₂. The first rod connects the fixed pivot to the first mass, and the second rod connects the first mass to the second mass.
 
-The corresponding angular velocities are $\omega_1 = \dot{\theta}_1$ and $\omega_2 = \dot{\theta}_2$.
+The masses and lengths are constant, positive, and do not need to be equal.
+
+The angular positions are $`\theta_1(t)`$ and $`\theta_2(t)`$, both measured from the downward vertical direction. The corresponding angular velocities are $`\omega_1 = \dot{\theta}_1`$ and $`\omega_2 = \dot{\theta}_2`$.
+
+The model assumes uniform gravitational acceleration $`g`$ and neglects friction and air resistance.
 
 ---
+
 ## Position of the First Mass
 
-The first mass is located at the end of the first pendulum. Its Cartesian coordinates are
+The first mass is located at the end of the first rod. Its Cartesian coordinates are
 
-$$x_1 = l\sin(\theta_1)$$
+```math
+x_1 = l_1\sin(\theta_1)
+```
 
-$$y_1 = -l\cos(\theta_1)$$
-
-where $l$ is the pendulum length and $\theta_1$ is measured from the downward vertical.
+```math
+y_1 = -l_1\cos(\theta_1)
+```
 
 Differentiating with respect to time gives the velocity components
 
-$$\dot{x}_1 = l\dot{\theta}_1\cos(\theta_1)$$
+```math
+\dot{x}_1 = l_1\dot{\theta}_1\cos(\theta_1)
+```
 
 and
 
-$$\dot{y}_1 = l\dot{\theta}_1\sin(\theta_1)$$
+```math
+\dot{y}_1 = l_1\dot{\theta}_1\sin(\theta_1)
+```
 
 The squared speed of the first mass is therefore
 
-$$v_1^2 = \dot{x}_1^2 + \dot{y}_1^2$$
+```math
+v_1^2 = \dot{x}_1^2 + \dot{y}_1^2
+```
 
 Substituting the velocity components gives
 
-$$v_1^2 = l^2\dot{\theta}_1^2\left[\cos^2(\theta_1)+\sin^2(\theta_1)\right]$$
+```math
+v_1^2 = l_1^2\dot{\theta}_1^2
+\left[\cos^2(\theta_1)+\sin^2(\theta_1)\right]
+```
 
 Using the trigonometric identity
 
-$$\cos^2(\theta_1)+\sin^2(\theta_1)=1$$
+```math
+\cos^2(\theta_1)+\sin^2(\theta_1)=1
+```
 
 the squared speed simplifies to
 
-$$v_1^2 = l^2\dot{\theta}_1^2$$
+```math
+v_1^2 = l_1^2\dot{\theta}_1^2
+```
 
 Therefore, the kinetic energy of the first mass is
 
-$$T_1 = \frac{1}{2}ml^2\dot{\theta}_1^2$$
+```math
+T_1 = \frac{1}{2}m_1l_1^2\dot{\theta}_1^2
+```
 
 ---
 
 ## Position of the Second Mass
 
-The second mass is attached to the end of the first pendulum, so its position depends on both angular coordinates:
+The second mass is attached to the end of the second rod, whose upper end moves with the first mass. Its position therefore depends on both angular coordinates:
 
-$$x_2 = l\sin(\theta_1)+l\sin(\theta_2)$$
+```math
+x_2 = l_1\sin(\theta_1)+l_2\sin(\theta_2)
+```
 
-$$y_2 = -l\cos(\theta_1)-l\cos(\theta_2)$$
+```math
+y_2 = -l_1\cos(\theta_1)-l_2\cos(\theta_2)
+```
 
 Differentiating with respect to time gives
 
-$$\dot{x}_2 = l\dot{\theta}_1\cos(\theta_1)+l\dot{\theta}_2\cos(\theta_2)$$
+```math
+\dot{x}_2 =
+l_1\dot{\theta}_1\cos(\theta_1)
++l_2\dot{\theta}_2\cos(\theta_2)
+```
 
 and
 
-$$\dot{y}_2 = l\dot{\theta}_1\sin(\theta_1)+l\dot{\theta}_2\sin(\theta_2)$$
+```math
+\dot{y}_2 =
+l_1\dot{\theta}_1\sin(\theta_1)
++l_2\dot{\theta}_2\sin(\theta_2)
+```
 
 The squared speed of the second mass is
 
-$$v_2^2 = \dot{x}_2^2+\dot{y}_2^2$$
+```math
+v_2^2 = \dot{x}_2^2+\dot{y}_2^2
+```
 
-Substituting the velocity components and simplifying gives
+Substituting the velocity components and using the identity
 
-$$v_2^2 = l^2\dot{\theta}_1^2+l^2\dot{\theta}_2^2+2l^2\dot{\theta}_1\dot{\theta}_2\cos(\theta_1-\theta_2)$$
+```math
+\cos(\theta_1)\cos(\theta_2)
++\sin(\theta_1)\sin(\theta_2)
+=\cos(\theta_1-\theta_2)
+```
+
+gives
+
+```math
+v_2^2 =
+l_1^2\dot{\theta}_1^2
++l_2^2\dot{\theta}_2^2
++2l_1l_2\dot{\theta}_1\dot{\theta}_2
+\cos(\theta_1-\theta_2)
+```
 
 Therefore, the kinetic energy of the second mass is
 
-$$T_2 = \frac{1}{2}m\left[l^2\dot{\theta}_1^2+l^2\dot{\theta}_2^2+2l^2\dot{\theta}_1\dot{\theta}_2\cos(\theta_1-\theta_2)\right]$$
+```math
+T_2 =
+\frac{1}{2}m_2
+\left[
+l_1^2\dot{\theta}_1^2
++l_2^2\dot{\theta}_2^2
++2l_1l_2\dot{\theta}_1\dot{\theta}_2
+\cos(\theta_1-\theta_2)
+\right]
+```
 
 ---
 
@@ -102,45 +161,73 @@ $$T_2 = \frac{1}{2}m\left[l^2\dot{\theta}_1^2+l^2\dot{\theta}_2^2+2l^2\dot{\thet
 
 The total kinetic energy of the system is
 
-$$T = T_1+T_2$$
+```math
+T = T_1+T_2
+```
 
 Combining the kinetic energies of both masses gives
 
-$$T = ml^2\dot{\theta}_1^2+\frac{1}{2}ml^2\dot{\theta}_2^2+ml^2\dot{\theta}_1\dot{\theta}_2\cos(\theta_1-\theta_2)$$
+```math
+\begin{aligned}
+T ={}&
+\frac{1}{2}(m_1+m_2)l_1^2\dot{\theta}_1^2
++\frac{1}{2}m_2l_2^2\dot{\theta}_2^2 \\
+&+m_2l_1l_2\dot{\theta}_1\dot{\theta}_2
+\cos(\theta_1-\theta_2)
+\end{aligned}
+```
 
-The final term represents the coupling between the two pendulums because the velocity of the second mass depends on the motion of both links.
+The coefficient $`m_1+m_2`$ appears in the first term because motion of the first rod contributes to the velocities of both masses.
+
+The final term represents the coupling between the two pendulums because the velocity of the second mass depends on the motion of both rods.
 
 ---
 
 ## Potential Energy
 
-The gravitational potential energy of each mass is determined by its vertical position.
+The gravitational potential energy of each mass is determined by its vertical position, with zero potential energy at the height of the fixed pivot.
 
 For the first mass,
 
-$$V_1 = mgy_1$$
+```math
+V_1 = m_1gy_1
+```
 
-Substituting the vertical coordinate of the first mass gives
+Substituting its vertical coordinate gives
 
-$$V_1 = -mgl\cos(\theta_1)$$
+```math
+V_1 = -m_1gl_1\cos(\theta_1)
+```
 
 For the second mass,
 
-$$V_2 = mgy_2$$
+```math
+V_2 = m_2gy_2
+```
 
 which gives
 
-$$V_2 = -mgl\cos(\theta_1)-mgl\cos(\theta_2)$$
+```math
+V_2 =
+-m_2gl_1\cos(\theta_1)
+-m_2gl_2\cos(\theta_2)
+```
 
 The total gravitational potential energy is therefore
 
-$$V = V_1+V_2$$
+```math
+V = V_1+V_2
+```
 
 so
 
-$$V = -2mgl\cos(\theta_1)-mgl\cos(\theta_2)$$
+```math
+V =
+-(m_1+m_2)gl_1\cos(\theta_1)
+-m_2gl_2\cos(\theta_2)
+```
 
-The factor of $2$ multiplying the first term appears because changing $\theta_1$ changes the vertical position of both masses.
+The coefficient $`m_1+m_2`$ appears in the first term because changing $`\theta_1`$ changes the vertical positions of both masses.
 
 ---
 
@@ -148,37 +235,161 @@ The factor of $2$ multiplying the first term appears because changing $\theta_1$
 
 The dynamics of the double pendulum are described using the Lagrangian
 
-$$L = T-V$$
+```math
+L = T-V
+```
 
 Substituting the expressions for kinetic and potential energy gives
 
-$$L = ml^2\dot{\theta}_1^2+\frac{1}{2}ml^2\dot{\theta}_2^2+ml^2\dot{\theta}_1\dot{\theta}_2\cos(\theta_1-\theta_2)+2mgl\cos(\theta_1)+mgl\cos(\theta_2)$$
+```math
+\begin{aligned}
+L ={}&
+\frac{1}{2}(m_1+m_2)l_1^2\dot{\theta}_1^2
++\frac{1}{2}m_2l_2^2\dot{\theta}_2^2 \\
+&+m_2l_1l_2\dot{\theta}_1\dot{\theta}_2
+\cos(\theta_1-\theta_2) \\
+&+(m_1+m_2)gl_1\cos(\theta_1)
++m_2gl_2\cos(\theta_2)
+\end{aligned}
+```
 
-The equations of motion are obtained using the Euler-Lagrange equation
+The equations of motion are obtained using the Euler–Lagrange equation
 
-$$\frac{d}{dt}\left(\frac{\partial L}{\partial\dot{\theta}_i}\right)-\frac{\partial L}{\partial\theta_i}=0$$
+```math
+\frac{d}{dt}
+\left(\frac{\partial L}{\partial\dot{\theta}_i}\right)
+-\frac{\partial L}{\partial\theta_i}
+=0
+```
 
-for $i=1,2$.
+for $`i=1,2`$.
 
 ---
 
 ## Equations of Motion
 
-Applying the Euler-Lagrange equation to $\theta_1$ gives
+Applying the Euler–Lagrange equation to $`\theta_1`$ and dividing by $`l_1`$ gives
 
-$$2\ddot{\theta}_1+\ddot{\theta}_2\cos(\theta_1-\theta_2)+\dot{\theta}_2^2\sin(\theta_1-\theta_2)+2\frac{g}{l}\sin(\theta_1)=0$$
+```math
+\begin{aligned}
+&(m_1+m_2)l_1\ddot{\theta}_1
++m_2l_2\ddot{\theta}_2\cos(\theta_1-\theta_2) \\
+&\quad
++m_2l_2\dot{\theta}_2^2\sin(\theta_1-\theta_2)
++(m_1+m_2)g\sin(\theta_1)
+=0
+\end{aligned}
+```
 
-Applying the Euler-Lagrange equation to $\theta_2$ gives
+Applying the Euler–Lagrange equation to $`\theta_2`$ and dividing by $`m_2l_2`$ gives
 
-$$\ddot{\theta}_2+\ddot{\theta}_1\cos(\theta_1-\theta_2)-\dot{\theta}_1^2\sin(\theta_1-\theta_2)+\frac{g}{l}\sin(\theta_2)=0$$
+```math
+l_2\ddot{\theta}_2
++l_1\ddot{\theta}_1\cos(\theta_1-\theta_2)
+-l_1\dot{\theta}_1^2\sin(\theta_1-\theta_2)
++g\sin(\theta_2)
+=0
+```
 
-These equations are both **nonlinear** and **coupled**. The acceleration of each pendulum depends on the position and motion of the other, producing the complex motion associated with the double-pendulum system.
+These equations are nonlinear and coupled. The acceleration of each pendulum depends on the position and motion of the other.
 
-For numerical integration, the coupled equations are solved for the angular accelerations
+---
 
-$$\ddot{\theta}_1 \qquad \text{and} \qquad \ddot{\theta}_2$$
+## Angular Accelerations for Numerical Integration
 
-These angular accelerations are then used to construct the first-order system of ordinary differential equations integrated using the RK2 midpoint method.
+For numerical integration, the coupled equations must be solved for $`\ddot{\theta}_1`$ and $`\ddot{\theta}_2`$.
+
+Define the angular difference
+
+```math
+\delta = \theta_1-\theta_2
+```
+
+and the common mass factor
+
+```math
+D = m_1+m_2\sin^2(\delta)
+```
+
+Using $`\omega_1=\dot{\theta}_1`$ and $`\omega_2=\dot{\theta}_2`$, the angular acceleration of the first pendulum is
+
+```math
+\ddot{\theta}_1 =
+\frac{
+m_2g\sin(\theta_2)\cos(\delta)
+-(m_1+m_2)g\sin(\theta_1)
+-m_2\sin(\delta)
+\left[l_1\omega_1^2\cos(\delta)+l_2\omega_2^2\right]
+}{
+l_1D
+}
+```
+
+The angular acceleration of the second pendulum is
+
+```math
+\ddot{\theta}_2 =
+\frac{
+(m_1+m_2)
+\left[
+l_1\omega_1^2\sin(\delta)
+-g\sin(\theta_2)
++g\sin(\theta_1)\cos(\delta)
+\right]
++m_2l_2\omega_2^2\sin(\delta)\cos(\delta)
+}{
+l_2D
+}
+```
+
+Because both masses are positive, $`D>0`$ for every angular configuration.
+
+These accelerations define the first-order system
+
+```math
+\begin{aligned}
+\dot{\theta}_1 &= \omega_1, \\
+\dot{\omega}_1 &= \ddot{\theta}_1, \\
+\dot{\theta}_2 &= \omega_2, \\
+\dot{\omega}_2 &= \ddot{\theta}_2.
+\end{aligned}
+```
+
+The RK2 midpoint method evaluates this system at the current state to estimate the midpoint state, then evaluates it again at the midpoint to advance the solution by one timestep.
+
+---
+
+## Equal-Mass and Equal-Length Special Case
+
+Setting
+
+```math
+m_1=m_2=m,
+\qquad
+l_1=l_2=l
+```
+
+reduces the generalized equations of motion to
+
+```math
+2\ddot{\theta}_1
++\ddot{\theta}_2\cos(\theta_1-\theta_2)
++\dot{\theta}_2^2\sin(\theta_1-\theta_2)
++2\frac{g}{l}\sin(\theta_1)
+=0
+```
+
+and
+
+```math
+\ddot{\theta}_2
++\ddot{\theta}_1\cos(\theta_1-\theta_2)
+-\dot{\theta}_1^2\sin(\theta_1-\theta_2)
++\frac{g}{l}\sin(\theta_2)
+=0
+```
+
+Thus, the equal-mass, equal-length model is a special case of the generalized system.
 
 ## Numerical Method: Second-Order Runge-Kutta (RK2)
 
