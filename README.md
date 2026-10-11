@@ -8,7 +8,7 @@
 
 # Introduction
 
-Python simulation of a nonlinear double pendulum using a second-order Runge-Kutta (RK2) ODE solver. Explores chaotic motion, timestep selection, energy conservation, numerical accuracy, and an interactive Pygame visualization of the coupled pendulum system.
+In this project, I created a Python simulation of a nonlinear double pendulum using a second-order Runge-Kutta (RK2) ODE solver. This lets me explore the system's chaotic motion by varying parameters such as timestep, mass, and pendulum length, and observe its total energy and numerical accuracy. I’ve also included an interactive Pygame visualization of the coupled pendulum system.
 ## Objectives
 - Model a nonlinear double pendulum
 - Solve the equations of motion numerically
