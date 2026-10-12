@@ -430,7 +430,7 @@ python -m pip install numpy matplotlib pygame
 Then run the simulation:
 
 ```bash
-python "ProjectCoder.py"
+python "ProjectCode.py"
 ```
 
 The Pygame animation window will open first. After the animation is closed or reaches the end of the simulation, the Matplotlib relative-energy-error plot is displayed.
