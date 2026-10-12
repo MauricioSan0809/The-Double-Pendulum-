@@ -157,7 +157,16 @@ $$L = T-V$$
 
 Substituting the expressions for kinetic and potential energy gives
 
-$$L = ml^2\dot{\theta}_1^2+\frac{1}{2}ml^2\dot{\theta}_2^2+ml^2\dot{\theta}_1\dot{\theta}_2\cos(\theta_1-\theta_2)+2mgl\cos(\theta_1)+mgl\cos(\theta_2)$$
+```math
+\begin{aligned}
+L &= ml^2\dot{\theta}_1^2
+   + \frac{1}{2}ml^2\dot{\theta}_2^2 \\
+  &\quad + ml^2\dot{\theta}_1\dot{\theta}_2
+    \cos(\theta_1-\theta_2) \\
+  &\quad + 2mgl\cos(\theta_1)
+    + mgl\cos(\theta_2).
+\end{aligned}
+```
 
 The equations of motion are obtained using the Euler-Lagrange equation
 
