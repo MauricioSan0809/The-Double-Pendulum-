@@ -273,22 +273,23 @@ Applying the Euler–Lagrange equation to $`\theta_1`$ and dividing by $`l_1`$ g
 +m_2l_2\ddot{\theta}_2\cos(\theta_1-\theta_2) \\
 &\quad
 +m_2l_2\dot{\theta}_2^2\sin(\theta_1-\theta_2)
-+(m_1+m_2)g\sin(\theta_1)
-=0
++(m_1+m_2)g\sin(\theta_1)=0.
 \end{aligned}
 ```
 
 Applying the Euler–Lagrange equation to $`\theta_2`$ and dividing by $`m_2l_2`$ gives
 
 ```math
-l_2\ddot{\theta}_2
-+l_1\ddot{\theta}_1\cos(\theta_1-\theta_2)
+\begin{aligned}
+&l_2\ddot{\theta}_2
++l_1\ddot{\theta}_1\cos(\theta_1-\theta_2) \\
+&\quad
 -l_1\dot{\theta}_1^2\sin(\theta_1-\theta_2)
-+g\sin(\theta_2)
-=0
++g\sin(\theta_2)=0.
+\end{aligned}
 ```
 
-These equations are nonlinear and coupled. The acceleration of each pendulum depends on the position and motion of the other.
+These equations are nonlinear and coupled. The angular acceleration of each pendulum depends on the position and motion of the other.
 
 ---
 
