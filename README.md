@@ -135,13 +135,13 @@ Substituting the velocity components and using the identity
 gives
 
 ```math
-v_2^2 =
-l_1^2\dot{\theta}_1^2
-+l_2^2\dot{\theta}_2^2
-+2l_1l_2\dot{\theta}_1\dot{\theta}_2
-\cos(\theta_1-\theta_2)
+\begin{aligned}
+T_2 &= \frac{1}{2}m_2l_1^2\dot{\theta}_1^2
+     + \frac{1}{2}m_2l_2^2\dot{\theta}_2^2 \\
+    &\quad + m_2l_1l_2\dot{\theta}_1\dot{\theta}_2
+      \cos(\theta_1-\theta_2)
+\end{aligned}
 ```
-
 Therefore, the kinetic energy of the second mass is
 
 ```math
