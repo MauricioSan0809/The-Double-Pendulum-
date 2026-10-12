@@ -92,7 +92,14 @@ $$v_2^2 = l^2\dot{\theta}_1^2+l^2\dot{\theta}_2^2+2l^2\dot{\theta}_1\dot{\theta}
 
 Therefore, the kinetic energy of the second mass is
 
-$$T_2 = \frac{1}{2}m\left[l^2\dot{\theta}_1^2+l^2\dot{\theta}_2^2+2l^2\dot{\theta}_1\dot{\theta}_2\cos(\theta_1-\theta_2)\right]$$
+```math
+\begin{aligned}
+T_2 &= \frac{1}{2}ml^2\dot{\theta}_1^2
+     + \frac{1}{2}ml^2\dot{\theta}_2^2 \\
+    &\quad + ml^2\dot{\theta}_1\dot{\theta}_2
+      \cos(\theta_1-\theta_2).
+\end{aligned}
+```
 
 ---
 
